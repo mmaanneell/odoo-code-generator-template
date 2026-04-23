@@ -26,8 +26,7 @@
                     <field name="name" />
                 </arrow>
                 <label
-                    for=""
-                    string="Caution, all modification is live. Diagram model: demo.model_3.portal.diagram, node model: demo.model.portal and arrow model: demo.model_2.portal"
+                    string="Note: changes made directly in this diagram are saved immediately."
                 />
             </diagram>
         </field>
@@ -37,16 +36,18 @@
         <field name="name">demo_model_3_portal_diagram_form</field>
         <field name="model">demo.model_3.portal.diagram</field>
         <field name="arch" type="xml">
-            <form string="Titre">
+            <form string="Portal Diagram">
                 <sheet>
                     <group>
                         <field name="name" />
                     </group>
                     <group>
-                        <field name="diagram_demo2_ids" />
+                        <field name="diagram_demo2_ids"
+                               help="The arrows linking nodes together in the diagram."/>
                     </group>
                     <group>
-                        <field name="diagram_demo_ids" />
+                        <field name="diagram_demo_ids"
+                               help="The boxes displayed in the diagram."/>
                     </group>
                 </sheet>
             </form>
@@ -71,28 +72,18 @@
                 <field name="name" />
                 <field name="diagram_demo2_ids" />
                 <field name="diagram_demo_ids" />
+                <field name="label_connections" />
+                <field name="label_nodes" />
                 <templates>
                     <t t-name="card">
                         <div t-attf-class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <ul>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="name" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="diagram_demo2_ids" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="diagram_demo_ids" />
-                                        </strong>
-                                    </li>
-                                </ul>
+                            <div class="ms-3 mb-1">
+                                <strong><field name="name" /></strong>&#160;
                             </div>
+                            <ul>
+                                <li><t t-esc="record.label_connections.value"/>: <field name="diagram_demo2_ids" /></li>
+                                <li><t t-esc="record.label_nodes.value"/>: <field name="diagram_demo_ids" /></li>
+                            </ul>
                         </div>
                     </t>
                 </templates>
@@ -135,7 +126,7 @@
     </record>
 
     <record id="demo_model_3_portal_diagram_demo_model_3_portal_diagram_action_window" model="ir.actions.act_window">
-        <field name="name">Demo model 3 portal diagram</field>
+        <field name="name">Diagrams</field>
         <field name="res_model">demo.model_3.portal.diagram</field>
         <field name="view_mode">kanban,list,pivot,graph,form,diagram</field>
     </record>

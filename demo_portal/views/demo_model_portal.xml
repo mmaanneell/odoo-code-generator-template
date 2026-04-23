@@ -4,7 +4,7 @@
         <field name="name">demo_model_portal_calendar</field>
         <field name="model">demo.model.portal</field>
         <field name="arch" type="xml">
-            <calendar color="name" date_start="demo_date_time" string="Demo model portal">
+            <calendar color="name" date_start="demo_date_time" string="Nodes">
                 <field name="name" />
                 <field name="demo_binary" />
                 <field name="demo_binary_image" widget="image" />
@@ -33,67 +33,41 @@
         <field name="name">demo_model_portal_form</field>
         <field name="model">demo.model.portal</field>
         <field name="arch" type="xml">
-            <form string="Titre">
+            <form string="Node">
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="diagram_id" help="The diagram this node belongs to." />
                     </group>
-                    <group>
-                        <field name="demo_binary" />
+                    <group string="Diagram Position">
+                        <field name="xpos" help="Horizontal position of this node in the diagram canvas." />
+                        <field name="ypos" help="Vertical position of this node in the diagram canvas." />
                     </group>
-                    <group>
-                        <field name="demo_binary_image" widget="image" />
+                    <group string="Connections">
+                        <field name="demo_one2many_dst" help="Connections where this node is the source (arrows going out)." />
+                        <field name="demo_one2many_src" help="Connections where this node is the destination (arrows coming in)." />
                     </group>
-                    <group>
-                        <field name="demo_boolean" />
-                    </group>
-                    <group>
+                    <group string="Demo Fields">
                         <field name="demo_char" />
-                    </group>
-                    <group>
-                        <field name="demo_date" />
-                    </group>
-                    <group>
-                        <field name="demo_date_time" />
-                    </group>
-                    <group>
-                        <field name="demo_external_link" />
-                    </group>
-                    <group>
-                        <field name="demo_float" />
-                    </group>
-                    <group>
-                        <field name="demo_float_time" widget="float_time" />
-                    </group>
-                    <group>
-                        <field name="demo_html" />
-                    </group>
-                    <group>
+                        <field name="demo_boolean" />
                         <field name="demo_integer" />
-                    </group>
-                    <group>
-                        <field name="demo_many2many" />
-                    </group>
-                    <group>
+                        <field name="demo_float" />
+                        <field name="demo_float_time" widget="float_time" />
+                        <field name="demo_date" />
+                        <field name="demo_date_time" />
                         <field name="demo_selection" />
+                    </group>
+                    <group string="Other">
+                        <field name="demo_binary" />
+                        <field name="demo_binary_image" widget="image" />
+                        <field name="demo_external_link" />
+                        <field name="demo_many2many" />
                     </group>
                     <group>
                         <field name="demo_text" />
                     </group>
                     <group>
-                        <field name="diagram_id" />
-                    </group>
-                    <group>
-                        <field name="xpos" />
-                    </group>
-                    <group>
-                        <field name="ypos" />
-                    </group>
-                    <group>
-                        <field name="demo_one2many_dst" />
-                    </group>
-                    <group>
-                        <field name="demo_one2many_src" />
+                        <field name="demo_html" />
                     </group>
                 </sheet>
                 <chatter/>
@@ -105,22 +79,17 @@
         <field name="name">demo_model_portal_graph</field>
         <field name="model">demo.model.portal</field>
         <field name="arch" type="xml">
-            <graph string="Demo model portal">
+            <graph string="Nodes">
                 <field name="name" type="row" />
-                <field name="demo_binary" type="row" />
-                <field name="demo_binary_image" type="row" />
                 <field name="demo_boolean" type="row" />
                 <field name="demo_char" type="row" />
                 <field name="demo_date" type="row" />
                 <field name="demo_date_time" type="row" />
-                <field name="demo_external_link" type="row" />
+                <field name="demo_selection" type="row" />
+                <field name="diagram_id" type="row" />
                 <field name="demo_float" type="measure" />
                 <field name="demo_float_time" type="measure" />
-                <field name="demo_html" type="row" />
                 <field name="demo_integer" type="measure" />
-                <field name="demo_selection" type="row" />
-                <field name="demo_text" type="row" />
-                <field name="diagram_id" type="row" />
                 <field name="xpos" type="measure" />
                 <field name="ypos" type="measure" />
             </graph>
@@ -133,133 +102,23 @@
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile">
                 <field name="name" />
-                <field name="demo_binary" />
-                <field name="demo_binary_image" widget="image" />
-                <field name="demo_boolean" />
-                <field name="demo_char" />
-                <field name="demo_date" />
-                <field name="demo_date_time" />
-                <field name="demo_external_link" widget="link_button" />
-                <field name="demo_float" />
-                <field name="demo_float_time" widget="float_time" />
-                <field name="demo_html" />
-                <field name="demo_integer" />
-                <field name="demo_many2many" />
-                <field name="demo_selection" />
-                <field name="demo_text" />
                 <field name="diagram_id" />
-                <field name="xpos" />
-                <field name="ypos" />
                 <field name="demo_one2many_dst" />
                 <field name="demo_one2many_src" />
+                <field name="label_diagram" />
+                <field name="label_source" />
+                <field name="label_destination" />
                 <templates>
                     <t t-name="card">
                         <div t-attf-class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <ul>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="name" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_binary" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_binary_image" />
-                                        </strong>
-                                    </li>
-                                    <li class="text-success float-right mb4" t-if="record.demo_boolean.raw_value">
-                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
-                                    </li>
-                                    <li class="text-danger float-right mb4" t-if="!record.demo_boolean.raw_value">
-                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_char" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_date" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_date_time" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_external_link" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_float" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_float_time" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_html" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_integer" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_many2many" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_selection" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_text" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="diagram_id" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="xpos" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="ypos" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_one2many_dst" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_one2many_src" />
-                                        </strong>
-                                    </li>
-                                </ul>
+                            <div class="ms-3 mb-1">
+                                <strong><field name="name" /></strong>&#160;
                             </div>
+                            <ul>
+                                <li><t t-esc="record.label_diagram.value"/>: <field name="diagram_id" /></li>
+                                <li><t t-esc="record.label_source.value"/>: <field name="demo_one2many_dst" /></li>
+                                <li><t t-esc="record.label_destination.value"/>: <field name="demo_one2many_src" /></li>
+                            </ul>
                         </div>
                     </t>
                 </templates>
@@ -271,20 +130,16 @@
         <field name="name">demo_model_portal_pivot</field>
         <field name="model">demo.model.portal</field>
         <field name="arch" type="xml">
-            <pivot string="Demo model portal">
+            <pivot string="Nodes">
                 <field name="name" type="row" />
                 <field name="demo_boolean" type="row" />
                 <field name="demo_char" type="row" />
                 <field name="demo_date" type="row" />
-                <field name="demo_date_time" type="row" />
-                <field name="demo_external_link" type="row" />
+                <field name="demo_selection" type="row" />
+                <field name="diagram_id" type="row" />
                 <field name="demo_float" type="measure" />
                 <field name="demo_float_time" type="measure" />
-                <field name="demo_html" type="row" />
                 <field name="demo_integer" type="measure" />
-                <field name="demo_selection" type="row" />
-                <field name="demo_text" type="row" />
-                <field name="diagram_id" type="row" />
                 <field name="xpos" type="measure" />
                 <field name="ypos" type="measure" />
             </pivot>
@@ -295,43 +150,18 @@
         <field name="name">demo_model_portal_search</field>
         <field name="model">demo.model.portal</field>
         <field name="arch" type="xml">
-            <search string="Demo model portal">
+            <search string="Nodes">
                 <filter domain="[('name','!=',False)]" name="name" string="Name" />
-                <filter domain="[('demo_binary','!=',False)]" name="demo_binary" string="Binary demo" />
-                <filter
-                    domain="[('demo_binary_image','!=',False)]"
-                    name="demo_binary_image"
-                    string="Binary image demo"
-                />
-                <filter domain="[('demo_boolean','=',True)]" name="demo_boolean" string="Boolean demo" />
-                <filter domain="[('demo_char','!=',False)]" name="demo_char" string="Char demo" />
-                <filter domain="[('demo_date','!=',False)]" name="demo_date" string="Date demo" />
-                <filter domain="[('demo_date_time','!=',False)]" name="demo_date_time" string="Datetime demo" />
-                <filter
-                    domain="[('demo_external_link','!=',False)]"
-                    name="demo_external_link"
-                    string="External link demo"
-                />
-                <filter domain="[('demo_float','!=',False)]" name="demo_float" string="Float demo" />
-                <filter domain="[('demo_float_time','!=',False)]" name="demo_float_time" string="Float time demo" />
-                <filter domain="[('demo_html','!=',False)]" name="demo_html" string="HTML demo" />
-                <filter domain="[('demo_integer','!=',False)]" name="demo_integer" string="Integer demo" />
-                <filter domain="[('demo_many2many','!=',False)]" name="demo_many2many" string="Many2many demo" />
-                <filter domain="[('demo_selection','!=',False)]" name="demo_selection" string="Selection demo" />
-                <filter domain="[('demo_text','!=',False)]" name="demo_text" string="Text demo" />
+                <filter domain="[('demo_char','!=',False)]" name="demo_char" string="Char" />
+                <filter domain="[('demo_boolean','=',True)]" name="demo_boolean" string="Boolean" />
+                <filter domain="[('demo_date','!=',False)]" name="demo_date" string="Date" />
+                <filter domain="[('demo_date_time','!=',False)]" name="demo_date_time" string="Datetime" />
+                <filter domain="[('demo_float','!=',False)]" name="demo_float" string="Float" />
+                <filter domain="[('demo_integer','!=',False)]" name="demo_integer" string="Integer" />
+                <filter domain="[('demo_selection','!=',False)]" name="demo_selection" string="Selection" />
                 <filter domain="[('diagram_id','!=',False)]" name="diagram_id" string="Diagram" />
-                <filter domain="[('xpos','!=',False)]" name="xpos" string="Diagram position x" />
-                <filter domain="[('ypos','!=',False)]" name="ypos" string="Diagram position y" />
-                <filter
-                    domain="[('demo_one2many_dst','!=',False)]"
-                    name="demo_one2many_dst"
-                    string="One2Many demo dst"
-                />
-                <filter
-                    domain="[('demo_one2many_src','!=',False)]"
-                    name="demo_one2many_src"
-                    string="One2Many demo src"
-                />
+                <filter domain="[('demo_one2many_dst','!=',False)]" name="demo_one2many_dst" string="Outgoing Connections" />
+                <filter domain="[('demo_one2many_src','!=',False)]" name="demo_one2many_src" string="Incoming Connections" />
             </search>
         </field>
     </record>
@@ -345,7 +175,7 @@
                 date_stop="demo_date"
                 default_group_by="name"
                 event_open_popup="True"
-                string="Demo model portal"
+                string="Nodes"
             />
         </field>
     </record>
@@ -356,23 +186,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name" />
-                <field name="demo_binary" />
-                <field name="demo_binary_image" widget="image" />
-                <field name="demo_boolean" />
-                <field name="demo_char" />
-                <field name="demo_date" />
-                <field name="demo_date_time" />
-                <field name="demo_external_link" widget="link_button" />
-                <field name="demo_float" />
-                <field name="demo_float_time" widget="float_time" />
-                <field name="demo_html" />
-                <field name="demo_integer" />
-                <field name="demo_many2many" />
-                <field name="demo_selection" />
-                <field name="demo_text" />
                 <field name="diagram_id" />
-                <field name="xpos" />
-                <field name="ypos" />
                 <field name="demo_one2many_dst" />
                 <field name="demo_one2many_src" />
             </list>
@@ -380,7 +194,7 @@
     </record>
 
     <record id="demo_model_portal_demo_model_portal_action_window" model="ir.actions.act_window">
-        <field name="name">Demo model portal</field>
+        <field name="name">Nodes</field>
         <field name="res_model">demo.model.portal</field>
         <field name="view_mode">kanban,list,timeline,pivot,graph,form,calendar,activity</field>
     </record>

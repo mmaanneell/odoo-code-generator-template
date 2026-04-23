@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class DemoModel3PortalDiagram(models.Model):
@@ -11,14 +11,26 @@ class DemoModel3PortalDiagram(models.Model):
     diagram_demo2_ids = fields.One2many(
         comodel_name="demo.model_2.portal",
         inverse_name="diagram_id",
-        string="One2Many demo 2",
+        string="Connections",
     )
 
     diagram_demo_ids = fields.One2many(
         comodel_name="demo.model.portal",
         inverse_name="diagram_id",
-        string="One2Many demo",
+        string="Nodes",
     )
+
+    label_connections = fields.Char(compute="_compute_labels")
+    label_nodes = fields.Char(compute="_compute_labels")
+
+    @api.depends()
+    def _compute_labels(self):
+        IrField = self.env["ir.model.fields"]
+        f_connections = IrField._get("demo.model_3.portal.diagram", "diagram_demo2_ids")
+        f_nodes = IrField._get("demo.model_3.portal.diagram", "diagram_demo_ids")
+        for rec in self:
+            rec.label_connections = f_connections.field_description
+            rec.label_nodes = f_nodes.field_description
 
     def _compute_access_url(self):
         # This is a comment need it for test, thanks

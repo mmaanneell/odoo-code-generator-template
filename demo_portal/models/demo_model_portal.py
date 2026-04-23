@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class DemoModelPortal(models.Model):
@@ -7,6 +7,21 @@ class DemoModelPortal(models.Model):
     _description = "demo_model_portal"
 
     name = fields.Char()
+
+    label_diagram = fields.Char(compute="_compute_labels")
+    label_source = fields.Char(compute="_compute_labels")
+    label_destination = fields.Char(compute="_compute_labels")
+
+    @api.depends()
+    def _compute_labels(self):
+        IrField = self.env["ir.model.fields"]
+        f_diagram = IrField._get("demo.model.portal", "diagram_id")
+        f_source = IrField._get("demo.model.portal", "demo_one2many_dst")
+        f_destination = IrField._get("demo.model.portal", "demo_one2many_src")
+        for rec in self:
+            rec.label_diagram = f_diagram.field_description
+            rec.label_source = f_source.field_description
+            rec.label_destination = f_destination.field_description
 
     demo_binary = fields.Binary(string="Binary demo")
 
@@ -41,13 +56,13 @@ class DemoModelPortal(models.Model):
     demo_one2many_dst = fields.One2many(
         comodel_name="demo.model_2.portal",
         inverse_name="demo_many2one_dst",
-        string="One2Many demo dst",
+        string="Source",
     )
 
     demo_one2many_src = fields.One2many(
         comodel_name="demo.model_2.portal",
         inverse_name="demo_many2one_src",
-        string="One2Many demo src",
+        string="Destination",
     )
 
     demo_selection = fields.Selection(

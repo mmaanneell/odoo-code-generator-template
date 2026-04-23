@@ -4,16 +4,16 @@
         <field name="name">demo_model_2_portal_form</field>
         <field name="model">demo.model_2.portal</field>
         <field name="arch" type="xml">
-            <form string="Titre">
+            <form string="Connection">
                 <sheet>
                     <group>
                         <field name="name" />
                     </group>
                     <group>
-                        <field name="demo_many2one_dst" />
+                        <field name="demo_many2one_dst" string="Destination" />
                     </group>
                     <group>
-                        <field name="demo_many2one_src" />
+                        <field name="demo_many2one_src" string="Source" />
                     </group>
                     <group>
                         <field name="diagram_id" />
@@ -28,10 +28,10 @@
         <field name="name">demo_model_2_portal_graph</field>
         <field name="model">demo.model_2.portal</field>
         <field name="arch" type="xml">
-            <graph string="Demo model 2 portal">
+            <graph string="Connections">
                 <field name="name" type="row" />
-                <field name="demo_many2one_dst" type="row" />
-                <field name="demo_many2one_src" type="row" />
+                <field name="demo_many2one_dst" string="Destination" type="row" />
+                <field name="demo_many2one_src" string="Source" type="row" />
                 <field name="diagram_id" type="row" />
             </graph>
         </field>
@@ -46,33 +46,20 @@
                 <field name="demo_many2one_dst" />
                 <field name="demo_many2one_src" />
                 <field name="diagram_id" />
+                <field name="label_diagram" />
+                <field name="label_source" />
+                <field name="label_destination" />
                 <templates>
                     <t t-name="card">
                         <div t-attf-class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <ul>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="name" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_many2one_dst" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="demo_many2one_src" />
-                                        </strong>
-                                    </li>
-                                    <li class="mb4">
-                                        <strong>
-                                            <field name="diagram_id" />
-                                        </strong>
-                                    </li>
-                                </ul>
+                            <div class="ms-3 mb-1">
+                                <strong><field name="name" /></strong>&#160;
                             </div>
+                            <ul>
+                                <li><t t-esc="record.label_destination.value"/>: <field name="demo_many2one_dst" /></li>
+                                <li><t t-esc="record.label_source.value"/>: <field name="demo_many2one_src" /></li>
+                                <li><t t-esc="record.label_diagram.value"/>: <field name="diagram_id" /></li>
+                            </ul>
                         </div>
                     </t>
                 </templates>
@@ -84,10 +71,10 @@
         <field name="name">demo_model_2_portal_pivot</field>
         <field name="model">demo.model_2.portal</field>
         <field name="arch" type="xml">
-            <pivot string="Demo model 2 portal">
+            <pivot string="Connections">
                 <field name="name" type="row" />
-                <field name="demo_many2one_dst" type="row" />
-                <field name="demo_many2one_src" type="row" />
+                <field name="demo_many2one_dst" string="Destination" type="row" />
+                <field name="demo_many2one_src" string="Source" type="row" />
                 <field name="diagram_id" type="row" />
             </pivot>
         </field>
@@ -97,10 +84,10 @@
         <field name="name">demo_model_2_portal_search</field>
         <field name="model">demo.model_2.portal</field>
         <field name="arch" type="xml">
-            <search string="Demo model 2 portal">
+            <search string="Connections">
                 <filter domain="[('name','!=',False)]" name="name" string="Name" />
-                <filter domain="[('demo_many2one_dst','!=',False)]" name="demo_many2one_dst" string="Many2one dst" />
-                <filter domain="[('demo_many2one_src','!=',False)]" name="demo_many2one_src" string="Many2one src" />
+                <filter domain="[('demo_many2one_dst','!=',False)]" name="demo_many2one_dst" string="Destination" />
+                <filter domain="[('demo_many2one_src','!=',False)]" name="demo_many2one_src" string="Source" />
                 <filter domain="[('diagram_id','!=',False)]" name="diagram_id" string="Diagram" />
             </search>
         </field>
@@ -111,16 +98,16 @@
         <field name="model">demo.model_2.portal</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name" />
-                <field name="demo_many2one_dst" />
-                <field name="demo_many2one_src" />
-                <field name="diagram_id" />
+                <field name="name"/>
+                <field name="demo_many2one_dst" string="Destination"/>
+                <field name="demo_many2one_src" string="Source"/>
+                <field name="diagram_id"/>
             </list>
         </field>
     </record>
 
     <record id="demo_model_2_portal_demo_model_2_portal_action_window" model="ir.actions.act_window">
-        <field name="name">Demo model 2 portal</field>
+        <field name="name">Connections</field>
         <field name="res_model">demo.model_2.portal</field>
         <field name="view_mode">kanban,list,pivot,graph,form,activity</field>
     </record>

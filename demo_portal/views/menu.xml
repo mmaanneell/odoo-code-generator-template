@@ -11,26 +11,28 @@
     <!--Child menu-->
 
     <menuitem
-        id="demo_model_2_portal"
-        name="Demo model 2 portal"
-        action="demo_model_2_portal_demo_model_2_portal_action_window"
+        id="demo_model_3_portal_diagram"
+        name="Diagrams"
+        action="demo_model_3_portal_diagram_demo_model_3_portal_diagram_action_window"
         sequence="1"
         parent="menu"
     />
 
     <menuitem
-        id="demo_model_3_portal_diagram"
-        name="Demo model 3 portal diagram"
-        action="demo_model_3_portal_diagram_demo_model_3_portal_diagram_action_window"
+        id="demo_model_portal"
+        name="Nodes"
+        action="demo_model_portal_demo_model_portal_action_window"
         sequence="2"
         parent="menu"
     />
 
     <menuitem
-        id="demo_model_portal"
-        name="Demo model portal"
-        action="demo_model_portal_demo_model_portal_action_window"
+        id="demo_model_2_portal"
+        name="Connections"
+        action="demo_model_2_portal_demo_model_2_portal_action_window"
         sequence="3"
         parent="menu"
     />
+
+
 </odoo>
