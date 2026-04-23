@@ -35,4 +35,16 @@
     />
 
 
+    <!--Configuration menu-->
+
+    <menuitem id="menu_demo_portal_config" name="Configuration" parent="demo_portal" sequence="90"/>
+
+    <menuitem
+        id="menu_demo_portal_guide"
+        name="Quick Guide"
+        parent="menu_demo_portal_config"
+        action="action_demo_portal_guide"
+        sequence="10"
+    />
+
 </odoo>

@@ -5,3 +5,4 @@ demo_model_3_portal_diagram_access_user_types_/_internal_user,demo_model_3_porta
 demo_model_3_portal_diagram_access_user_types_/_portal,demo_model_3_portal_diagram Access User types / Portal,model_demo_model_3_portal_diagram,base.group_portal,1,1,1,1
 demo_model_portal_access_user_types_/_internal_user,demo_model_portal Access User types / Internal User,model_demo_model_portal,base.group_user,1,1,1,1
 demo_model_portal_access_user_types_/_portal,demo_model_portal Access User types / Portal,model_demo_model_portal,base.group_portal,1,1,1,1
+access_demo_portal_help,demo.portal.help Access Internal User,model_demo_portal_help,base.group_user,1,1,1,1

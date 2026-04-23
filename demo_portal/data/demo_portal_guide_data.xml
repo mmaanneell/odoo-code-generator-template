@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_demo_portal_guide" model="ir.actions.server">
+        <field name="name">Quick Guide</field>
+        <field name="model_id" ref="model_demo_portal_help"/>
+        <field name="state">code</field>
+        <field name="code">
+lang = (env.lang or env.user.lang or "en_US").lower()
+is_fr = lang.startswith("fr")
+HelpModel = env["demo.portal.help"]
+content = HelpModel._get_help_html(is_fr)
+rec = HelpModel.create({"content_html": content})
+action = {
+    "type": "ir.actions.act_window",
+    "name": "Comment ça marche ?" if is_fr else "How does the Demo Portal work?",
+    "res_model": "demo.portal.help",
+    "res_id": rec.id,
+    "view_mode": "form",
+    "target": "new",
+    "views": [(False, "form")],
+}
+        </field>
+    </record>
+
+</odoo>

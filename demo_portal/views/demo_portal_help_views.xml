@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_demo_portal_help_form" model="ir.ui.view">
+        <field name="name">demo.portal.help.form</field>
+        <field name="model">demo.portal.help</field>
+        <field name="arch" type="xml">
+            <form string="How does the Demo Portal work?">
+                <sheet>
+                    <field name="content_html" readonly="1" nolabel="1"/>
+                </sheet>
+                <footer>
+                    <button string="Got it!" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

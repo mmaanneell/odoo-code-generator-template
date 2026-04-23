@@ -14,6 +14,8 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "data/demo_portal_guide_data.xml",
+        "views/demo_portal_help_views.xml",
         "views/demo_model_2_portal.xml",
         "views/demo_portal_templates.xml",
         "views/demo_model_3_portal_diagram.xml",
@@ -27,4 +29,5 @@
         "demo_portal/static/src/scss/demo_portal.scss",
     ],
     "installable": True,
+    "post_init_hook": "post_init_hook",
 }

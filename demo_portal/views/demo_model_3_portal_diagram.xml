@@ -38,6 +38,32 @@
         <field name="arch" type="xml">
             <form string="Portal Diagram">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            icon="fa-code-fork"
+                            name="action_open_diagram"
+                            type="object"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Diagram</span>
+                            </div>
+                        </button>
+                        <button
+                            class="oe_stat_button"
+                            icon="fa-question-circle"
+                            name="action_open_help"
+                            type="object"
+                            invisible="not id"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">How does it work?</span>
+                            </div>
+                        </button>
+                    </div>
+                    <p class="text-muted" style="font-size:0.9em;">
+                        How to use: Give this diagram a name, then add Nodes (the boxes) and Connections (the arrows between them). Click the Diagram button to visualize the result.
+                    </p>
                     <group>
                         <field name="name" />
                     </group>
@@ -129,5 +155,18 @@
         <field name="name">Diagrams</field>
         <field name="res_model">demo.model_3.portal.diagram</field>
         <field name="view_mode">kanban,list,pivot,graph,form,diagram</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first diagram!
+            </p>
+            <p>
+                Add nodes and connections first, then create a diagram to visualize them.
+            </p>
+            <p>
+                <strong>How to get started:</strong> click <strong>New</strong> to create
+                your first diagram, or open
+                <strong>Configuration → Quick Guide</strong> for a full step-by-step guide.
+            </p>
+        </field>
     </record>
 </odoo>
